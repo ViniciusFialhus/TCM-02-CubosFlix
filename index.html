@@ -12,10 +12,14 @@
     />
     <link rel="stylesheet" type="text/css" href="css/global.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script src="script.js" defer></script>
+    <script src="/js/script.js" defer></script>
   </head>
 
   <body>
+
+
+
+</div>
     <header class="header size">
       <div class="header__container-logo">
         <img src="./assets/logo-dark.png" alt="Logo" />
@@ -26,44 +30,106 @@
         <img class="btn-theme" src="./assets/light-mode.svg" alt="Botão de tema" />
       </div>
     </header>
-    <div class="container size">
-      <div class="movies-container">
-        <img class="btn-prev" src="./assets/arrow-left-dark.svg" alt="arrow left" />
-        <div class="movies"></div>
-        <img class="btn-next" src="./assets/arrow-right-dark.svg" alt="arrow right" />
-      </div>
+   
 
-      <div class="highlight size">
-        <a class="highlight__video-link" href="#" target="_blank">
-          <div class="highlight__video">
-            <img src="./assets/play.svg" alt="Play" />
-          </div>
-        </a>
-        <div class="highlight__info">
-          <div class="highlight__title-rating">
-            <h1 class="highlight__title"></h1>
-            <span class="highlight__rating"></span>
-          </div>
-          <div class="highlight__genre-launch">
-            <span class="highlight__genres"></span>
-            /
-            <span class="highlight__launch"></span>
-          </div>
-          <p class="highlight__description"></p>
-        </div>
-      </div>
+
+
+
+ <section class="container-movie">
+  <img class='arrow-left' id="seta-esquerda" src="/assets/arrow-left-dark.svg" alt="">
+    <div class="childrem-carrosel">
+
+<section class="movie 1">
+  <footer class="footer-movie">
+  <div class="continer-title">
+    <div class="title-movie"></div>
+  </div>
+    <img src="/assets/estrela.svg" alt="">
+    <div class="nota"></div>
+  </footer>
+</section>
+<section class="movie 2">
+  <footer class="footer-movie">
+  <div class="continer-title">
+    <div class="title-movie"></div>
+  </div>
+  <img src="/assets/estrela.svg" alt="">
+  <div class="nota"></div>
+</footer>
+</section>
+<section class="movie 3">
+  <footer class="footer-movie">
+  <div class="continer-title">
+    <div class="title-movie"></div>
+  </div>
+  <img src="/assets/estrela.svg" alt="">
+  <div class="nota"></div>
+</footer></section>
+<section class="movie 4">
+  <footer class="footer-movie">
+  <div class="continer-title">
+    <div class="title-movie"></div>
+  </div>
+  <img src="/assets/estrela.svg" alt="">
+  <div class="nota"></div>
+</footer></section>
+<section class="movie 5">
+  <footer class="footer-movie">
+  <div class="continer-title">
+    <div class="title-movie"></div>
+  </div>
+  <img src="/assets/estrela.svg" alt="">
+  <div class="nota"></div>
+</footer></section>
+<section class="movie 6">
+  <footer class="footer-movie">
+  <div class="continer-title">
+    <div class="title-movie"></div>
+  </div>
+  <img src="/assets/estrela.svg" alt="">
+  <div class="nota"></div>
+</footer></section>
+
+
+
+
     </div>
-    <div class="modal hidden">
-      <div class="modal__body">
-        <img src="./assets/close-dark.svg" alt="Close" class="modal__close" />
-        <h3 class="modal__title"></h3>
-        <img class="modal__img" alt="modal__img" />
-        <p class="modal__description"></p>
-        <div class="modal__genre-average">
-          <div class="modal__genres"></div>
-          <div class="modal__average"></div>
-        </div>
-      </div>
-    </div>
+    <img class='arrow-right' id="seta-direita" src="/assets/arrow-right-dark.svg" alt="">
+ </section>
+
+
+ <section class="movie-day">
+  <div class="video-container">
+<a href="" id="video" target="_blank">
+  <div id="div-video">
+<img src="/assets/play.svg" alt="" >
+  </div>
+</a>
+  </div>
+
+  <div class="text-container">
+<div class="text-container-title"></div>
+<div class="text-container-subtitle"></div>
+<div class="text-container-p"></div>
+<div class="text-container-nota-two"></div>
+    
+  </div>
+ </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </body>
 </html>
