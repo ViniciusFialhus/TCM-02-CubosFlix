@@ -3,9 +3,6 @@ const containerDePoster = document.querySelectorAll('.movie')
 const containerDeNota = document.querySelectorAll('.nota')
 let paginasAtuais = [] 
 
-
-
-
 const apiFilmes = axios.create({
     baseURL: 'https://tmdb-proxy.cubos-academy.workers.dev/3/discover/movie?language=pt-BR&include_adult=false',
     timeout: 1000,
@@ -26,7 +23,6 @@ const apiMovieDayVideos = axios.create({
 })
 
 
-
 const apiModalInf = axios.create({
   baseURL: 'https://tmdb-proxy.cubos-academy.workers.dev/3/movie',
   timeout: 1000,
@@ -38,8 +34,6 @@ const apibusca = axios.create({
   timeout: 1000,
   headers: { 'Content-Type': 'Application/json' }
 })
-
-
 
 
 async function Paginação (){
@@ -87,11 +81,6 @@ for( let i = 0; i< data.results.length; i++){
     mostrarModal(paginasAtuais[base][i])
     })
 
-
-
-
-
-
    containerDePoster[i].style.backgroundImage = `url(${paginasAtuais[0][i].poster_path})`
    let base = 0
    
@@ -118,9 +107,6 @@ async function SetarADireita(){
   setaDireita.addEventListener('click', (event) => {
    event.preventDefault()
    event.stopPropagation()
-
-
-   
    if( base > 1){ return}else{
     
     base++  
@@ -128,65 +114,41 @@ async function SetarADireita(){
     containerDeNota[i].textContent = paginasAtuais[base][i].price
     containerDePoster[i].style.backgroundImage = `url(${paginasAtuais[base][i].poster_path})` 
   
-  
-    
   }}
-
-
-
-    
 )}
   SetarADireita()
   SetarAEsquerda()
 }}
-Paginação()
 
-
-
-
-
-
-
-
-
-async function movieDay(){   
+async function filmeDoDia(){   
 
   const {data} = await apiMovieDayVideos.get()
-  const resultsGeral = await apiMovieDayGeral.get()
-  const imgMovieDay = resultsGeral.data.backdrop_path
+  const resultadoDoDia = await apiMovieDayGeral.get()
+  const imagemFilmeDoDia = resultadoDoDia.data.backdrop_path
 
 
   
-  const resultsData = data.results
-  const keyTrailer =  await resultsData[1].key
-  const movieDayVideo = document.querySelector('#video')
+  const resultadoData = data.results
+  const chaveTrailer =  await resultadoData[1].key
+  const filmedoDia = document.querySelector('#video')
   const divVideo = document.querySelector('#div-video')
-  const movieDayTitle = document.querySelector('.text-container-title')
-  const movieDaySubtitle = document.querySelector('.text-container-subtitle')
-  const movieDayP = document.querySelector('.text-container-p')
-  const movieDayNota = document.querySelector(".text-container-nota-two")
+  const FilmeDoDiaTitulo = document.querySelector('.text-container-title')
+  const FilmeDoDiaSubTitulo = document.querySelector('.text-container-subtitle')
+  const FilmeDoDiaP = document.querySelector('.text-container-p')
+  const FilmeDoDiaNota = document.querySelector(".text-container-nota-two")
 
  
-  movieDayTitle.textContent = resultsGeral.data.title
-  movieDaySubtitle.textContent = resultsGeral.data.genres[0].name +" "+ resultsGeral.data.genres[1].name + " " + resultsGeral.data.genres[2].name + " " + '/' +" " + resultsGeral.data.release_date
-  movieDayP.textContent = resultsGeral.data.overview
-  movieDayNota.textContent = resultsGeral.data.vote_average.toFixed(1)
-  movieDayVideo.href = `https://www.youtube.com/watch?v=${keyTrailer}`
-  divVideo.style.backgroundImage = `url(${imgMovieDay})`
+  FilmeDoDiaTitulo.textContent = resultadoDoDia.data.title
+  FilmeDoDiaSubTitulo.textContent = resultadoDoDia.data.genres[0].name +" "+ resultadoDoDia.data.genres[1].name + " " + resultadoDoDia.data.genres[2].name + " " + '/' +" " + resultadoDoDia.data.release_date
+  FilmeDoDiaP.textContent = resultadoDoDia.data.overview
+  FilmeDoDiaNota.textContent = resultadoDoDia.data.vote_average.toFixed(1)
+  filmedoDia.href = `https://www.youtube.com/watch?v=${chaveTrailer}`
+  divVideo.style.backgroundImage = `url(${imagemFilmeDoDia})`
 }
-
-movieDay()
-
-
-
-
 
 async function mostrarModal (Filme){
 
   const {data} = await apiModalInf.get(`${Filme.id}?language=pt-BR`)
-
-
-
   const Corpo = document.querySelector('body')
   const backgroundGeral = document.createElement('div')
   const modal =  document.createElement('div')
@@ -197,10 +159,6 @@ async function mostrarModal (Filme){
   const modalNota = document.createElement('div')
   const modalExtras = document.createElement('div')
   const imgex = document.createElement('img')
-
-
-  
-
   Corpo.appendChild(backgroundGeral)
   backgroundGeral.classList.add('background-modal')
   Corpo.appendChild(modal)
@@ -212,9 +170,7 @@ async function mostrarModal (Filme){
   modal.appendChild(imgex)
   imgex.src = '/assets/close-dark.svg'
   imgex.classList.add('imgex')
-
-
-   modal.appendChild(modaltitle) 
+  modal.appendChild(modaltitle) 
   modaltitle.classList.add('modaltitle')
   modaltitle.textContent = data.title
 
@@ -235,19 +191,12 @@ async function mostrarModal (Filme){
   modalExtras.classList.add('modalExtras')
   modaldeGenero.classList.add('modaldeGenero')
 
- 
-
   for(let genero of data.genres ){
 
-const genres = document.createElement('div')
-genres.textContent = genero.name
-modaldeGenero.appendChild(genres)
-genres.classList.add('genres')
-
-
-    
-  }
-
+const generos = document.createElement('div')
+generos.textContent = genero.name
+modaldeGenero.appendChild(generos)
+generos.classList.add('genres') }
 
 
 modalExtras.appendChild(modalNota)
@@ -257,24 +206,12 @@ modalNota.textContent =  data.vote_average.toFixed(1)
 modal.appendChild(imgex)
 imgex.src = '/assets/close.svg'
 imgex.classList.add('imgex')
-
-
 imgex.addEventListener('click', () => {
-
 Corpo.removeChild(backgroundGeral)
 Corpo.removeChild(modal)
 
+})}
 
-
-})
-
-
-
-}
-
-
-
-let base = 0
 async function buscaComEnter(){
 
 const inputbusca = document.querySelector('.input')
@@ -300,10 +237,6 @@ if ( event.key === 'Enter'){
       arraydeResultadosDividido.push(blocoTree)
       paginasAtuais = arraydeResultadosDividido
 
-
-
-
-
       if( textoDeBusca === ''){
 
         Paginação()
@@ -314,40 +247,67 @@ if ( event.key === 'Enter'){
       containerDePoster[i].style.backgroundImage = `url(${arraydeResultadosDividido[0][i].poster_path})`
       tituloDosFilmesDoCarossel[i].textContent = arraydeResultadosDividido[0][i].title
       containerDeNota[i].textContent = arraydeResultadosDividido[0][i].vote_average.toFixed(1)
+}}
 
-}
-
-
-
-}
 buscador()
+}})} 
 
 
 
+function mudançaDeTema(){
 
+  const btnTheme = document.querySelector(".btn-theme")
+  const header__title = document.querySelector(".header__title")
+  const header__containerImg = document.querySelector(".header__container-logo img")
+  const input = document.querySelector(".input")
+  const arrowLeft = document.querySelector(".arrow-left")
+  const arrowRight = document.querySelector(".arrow-right")
+  const childremCarrosel = document.querySelector('.childrem-carrosel')
+  const movieDay = document.querySelector('.movie-day')
+  const textContainerP = document.querySelector(".text-container-p")
+  const textContainerTitle = document.querySelector('.text-container-title')
+  const textContainerSub = document.querySelector('.text-container-subtitle')
+  const body = document.querySelector("body")
+  localStorage.setItem('theme', 'ligth')
+  btnTheme.addEventListener('click', () => {
+    
+    if(localStorage.getItem('theme') === 'ligth'){
 
- }
-  }
-   )
-    } 
-  
-
-   
-  
-
-
-
-
-
-
-
-
-
-
-
+      body.style.backgroundColor = '#1B2028'
+      header__title.style.color = '#FFFFFF'
+      textContainerP.style.color = '#FFFFFF'
+      textContainerSub.style.color = '#FFFFFF'
+      textContainerTitle.style.color = '#FFFFFF'
+      header__containerImg.src = './assets/logo.svg'
+      arrowLeft.src = "/assets/arrow-left-light.svg"
+      arrowRight.src = "/assets/arrow-right-light.svg"
+      childremCarrosel.style.backgroundColor = '#3E434D'
+      movieDay.style.backgroundColor = '#3E434D'
+      input.style.backgroundColor = '#3E434D'
+      btnTheme.src = './assets/dark-mode.svg'
+      localStorage.setItem('theme', 'dark')
+    } else {
+      body.style.background = 'white'
+      header__title.style.color = 'black'
+      textContainerP.style.color = 'white'
+      textContainerSub.style.color = 'white'
+      textContainerTitle.style.color = 'white'
+      header__containerImg.src = './assets/logo-dark.png'
+      arrowLeft.src = "/assets/arrow-left-dark.svg"
+      arrowRight.src = "/assets/arrow-right-dark.svg"
+      childremCarrosel.style.backgroundColor = '#EDEDED'
+      movieDay.style.backgroundColor = '#EDEDED'
+      input.style.backgroundColor = '#EDEDED'
+      btnTheme.src = './assets/light-mode.svg'
+      localStorage.setItem('theme', 'ligth')
+    }
+  })
+}
 
 buscaComEnter()
-
+Paginação()
+filmeDoDia()
+mudançaDeTema()
 
 
 

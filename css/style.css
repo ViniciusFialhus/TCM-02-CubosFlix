@@ -133,18 +133,19 @@ background-color:rgba(0,0,0,0.6);
 
 .continer-title{
 display: flex;
-justify-content: center;
 align-items: center;
 position: relative;
 left: 7px;
-  width: 100px;
-  height: 20px;
+width: 100px;
+height: 20px;
+
+
 
 }
 .footer-movie .title-movie{ 
 position: relative;
   
-  font-size: 10px;
+  font-size: 8px;
   color: white;
 }
 .footer-movie img { 
@@ -298,7 +299,7 @@ align-items: center;
   position: fixed;
  height: 650px;
  width: 700px;
- margin-top: 25px;
+ /* margin-top: 25px; */
  z-index: 300;
 
   background-color: #EDEDED;
