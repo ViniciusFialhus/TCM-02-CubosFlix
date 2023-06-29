@@ -4,7 +4,7 @@ Este repositório contém o segundo trabalho de conclusão de modulo da escola d
 
 ## Descrição do Projeto
 
-O objetivo principal deste projeto é replicar o website de portifolio encontrado no arquivo 'Desafio Módulo 3 - 2.0.fig'. O projeto visava o aprimoramento dos alunos da Cubos Academy no ambiento de elaboração de sites dinâmicos e interativos, pratica com interações com Api's externas usando o **AXIOS** e interação com o **LocalStorage** e **SessionStorage**. Ele foi desenvolvido utilizando HTML e CSS e JS.
+O objetivo principal deste projeto é replicar o layout e  as funcionalidades de um website de filmes chamado CubosFlix 'Desafio Módulo 3 - 2.0.fig'. O projeto visava o aprimoramento dos alunos da Cubos Academy no ambiento de elaboração de sites dinâmicos e interativos, pratica com interações com Api's externas usando o **AXIOS** e interação com o **LocalStorage** e **SessionStorage**. Ele foi desenvolvido utilizando HTML e CSS e JS.
 
 ## Feature do Projeto
 
